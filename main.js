@@ -157,11 +157,21 @@ window.addEventListener('wheel', reverseHandler);
 const scene00Video = document.getElementById('scene00-video');
 
 const loadVideo = new Promise((resolve) => {
-  if (scene00Video.readyState >= 3) {
+  let isResolved = false;
+  const finish = () => {
+    if (isResolved) return;
+    isResolved = true;
     resolve();
+  };
+
+  if (scene00Video.readyState >= 3) {
+    finish();
   } else {
-    scene00Video.addEventListener('canplaythrough', resolve, { once: true });
-    scene00Video.addEventListener('error', resolve, { once: true }); // resolve anyway on error
+    scene00Video.addEventListener('canplaythrough', finish, { once: true });
+    scene00Video.addEventListener('loadeddata', finish, { once: true });
+    scene00Video.addEventListener('error', finish, { once: true });
+    // Failsafe: max 5 seconds wait for video buffer
+    setTimeout(finish, 5000);
   }
 });
 

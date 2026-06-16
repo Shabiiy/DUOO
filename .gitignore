@@ -2,8 +2,8 @@ node_modules/
 dist/
 .env
 .DS_Store
-# Assets now live in public/ - exclude the old root assets/ folder from git
-/assets/
+# Assets now live in public/ - exclude the old assets/ folder from git
+assets/
 
 
 .vercel
