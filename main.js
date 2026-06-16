@@ -153,9 +153,49 @@ const reverseHandler = (e) => {
 };
 window.addEventListener('wheel', reverseHandler);
 
-let loadProgress = 0;
-const fakeLoader = setInterval(() => {
-  loadProgress += 5;
-  introScreen.updateProgress(loadProgress);
-  if (loadProgress >= 100) clearInterval(fakeLoader);
-}, 50);
+// --- Real Asset Preloading ---
+const scene00Video = document.getElementById('scene00-video');
+
+const loadVideo = new Promise((resolve) => {
+  if (scene00Video.readyState >= 3) {
+    resolve();
+  } else {
+    scene00Video.addEventListener('canplaythrough', resolve, { once: true });
+    scene00Video.addEventListener('error', resolve, { once: true }); // resolve anyway on error
+  }
+});
+
+const loadWindow = new Promise((resolve) => {
+  if (document.readyState === 'complete') {
+    resolve();
+  } else {
+    window.addEventListener('load', resolve, { once: true });
+  }
+});
+
+// We can also ensure fonts are loaded
+const loadFonts = document.fonts ? document.fonts.ready : Promise.resolve();
+
+let progress = 0;
+const targetProgress = 100;
+const increment = 10;
+
+// Simulate progress until promises resolve
+const loadingInterval = setInterval(() => {
+  if (progress < 85) { // Cap artificial progress at 85%
+    progress += increment;
+    introScreen.updateProgress(progress);
+  }
+}, 150);
+
+Promise.all([loadVideo, loadWindow, loadFonts]).then(() => {
+  clearInterval(loadingInterval);
+  // Fast forward to 100% smoothly
+  const finishInterval = setInterval(() => {
+    progress += 5;
+    introScreen.updateProgress(progress);
+    if (progress >= 100) {
+      clearInterval(finishInterval);
+    }
+  }, 30);
+});

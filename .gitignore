@@ -5,3 +5,6 @@ dist/
 # Assets now live in public/ - exclude the old assets/ folder from git
 assets/
 
+
+.vercel
+.env*
