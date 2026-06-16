@@ -31,7 +31,7 @@ export class BuildSequence {
     for (let i = 1; i <= this.frameCount; i++) {
       const img = new Image();
       const paddedNum = i.toString().padStart(6, '0');
-      img.src = `./assets/BUILD/frames/frame_${paddedNum}.webp`;
+      img.src = `/assets/BUILD/frames/frame_${paddedNum}.webp`;
       this.images.push(img);
     }
   }
