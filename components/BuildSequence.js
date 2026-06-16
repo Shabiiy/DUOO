@@ -23,6 +23,8 @@ export class BuildSequence {
     
     this.resize = this.resize.bind(this);
     window.addEventListener('resize', this.resize);
+    
+    this.preloadImages();
   }
 
   preloadImages() {
