@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUUO Interiors | Concept to Completion. Without Chaos.</title>
+    <meta name="description" content="Premium interior design and fit-out studio in Dubai delivering refined spaces through structure, precision, and craft." />
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="DUUO Interiors | Luxury Interior Design & Fit-Out Studio Dubai" />
+    <meta property="og:description" content="Premium interior design and fit-out studio in Dubai delivering refined spaces through structure, precision, and craft." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.duuointeriors.com/" />
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DUUO Interiors | Luxury Interior Design & Fit-Out Studio Dubai" />
+    <meta name="twitter:description" content="Premium interior design and fit-out studio in Dubai delivering refined spaces through structure, precision, and craft." />
+    <link rel="canonical" href="https://www.duuointeriors.com/" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav id="navbar" aria-label="Main Navigation">
+      <div class="nav-brand pill glass" style="cursor: none;">
+        <span class="hover-circle" aria-hidden="true"></span>
+        <span class="label-stack">
+          <span class="pill-label" style="font-weight: 700; letter-spacing: 2px;">DUUO</span>
+          <span class="pill-label-hover" aria-hidden="true" style="font-weight: 700; letter-spacing: 2px;">DUUO</span>
+        </span>
+      </div>
+    </nav>
+
+    <!-- Intro Screen -->
+    <div id="intro-screen">
+      <!-- Subtle Film Grain -->
+      <div class="film-grain"></div>
+      
+      <!-- Central Logo & Taglines -->
+      <div class="logo-container">
+        <img src="./assets/duuologo.png" alt="DUUO Logo" id="intro-logo" />
+        <div class="intro-tagline-1">DESIGN TO BUILD</div>
+        <div class="intro-tagline-2">By The DUUO Brothers</div>
+      </div>
+
+      <!-- Elegant Hint -->
+      <div class="intro-hint">Scroll to Enter</div>
+
+      <!-- Loading Progress -->
+      <div id="loading-container">
+        <div class="loading-bar"></div>
+        <div class="loading-text">0%</div>
+      </div>
+    </div>
+
+    <!-- Pixel Reveal Container -->
+    <div id="pixel-reveal-container"></div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Scene 00 Video Section -->
+      <section id="scene00-section" style="width: 100vw; height: 100vh; position: relative; overflow: hidden; background-color: var(--charcoal);">
+        <video id="scene00-video" src="./assets/scene00.mp4" playsinline muted preload="auto" style="width: 100%; height: 100%; object-fit: cover;"></video>
+        <!-- Chaos Messages Container -->
+        <div id="chaos-container"></div>
+      </section>
+
+      <!-- Founders Section -->
+      <section id="founders-section" style="display: none; width: 100vw; min-height: 100vh; position: relative; background: var(--cream); overflow: hidden; padding: 4rem; box-sizing: border-box; font-family: var(--font-sans);">
+        
+        <!-- SVG Filter for Distortion -->
+        <svg style="width: 0; height: 0; position: absolute; pointer-events: none;">
+          <filter id="fs-distortion">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" id="fs-turb" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="fs-disp" />
+          </filter>
+        </svg>
+        
+        <!-- TOP LEFT STACK -->
+        <div class="fs-fade" style="position: absolute; top: 3rem; left: 4rem; display: flex; flex-direction: column; gap: 0rem; font-family: var(--font-sans); font-size: 3.5rem; font-weight: 500; letter-spacing: 0.1em; line-height: 0.85; -webkit-text-stroke: 1.5px var(--rust); color: transparent; opacity: 0; transform: translateY(20px); z-index: 4; filter: url(#fs-distortion);">
+          <div>DUUO</div>
+          <div>DUUO</div>
+          <div>DUUO</div>
+        </div>
+
+        <!-- TOP RIGHT INFO -->
+        <div class="fs-fade" style="position: absolute; top: 3rem; right: 4rem; text-align: right; font-size: 0.75rem; color: var(--rust); letter-spacing: 0.15em; line-height: 1.6; text-transform: uppercase; opacity: 0; transform: translateY(20px); z-index: 4; font-weight: 500; filter: url(#fs-distortion);">
+          <div style="margin-bottom: 1.5rem;">DUUO INTERIORS</div>
+          <div style="margin-bottom: 1.5rem;">ARCHITECTURE<br/>INTERIOR DESIGN<br/>CRAFT</div>
+          <div>DUUO.COM<br/>2026</div>
+        </div>
+
+        <!-- CENTER COMPOSITION -->
+        <div style="width: 100%; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
+          
+          <!-- TOP CENTER TEXT -->
+          <div class="fs-fade" style="text-align: center; margin-top: 1rem; opacity: 0; transform: translateY(20px); filter: url(#fs-distortion);">
+            <div style="font-size: 1.25rem; letter-spacing: 0.4em; color: var(--charcoal); text-transform: uppercase; margin-bottom: 1.5rem;">TWO BROTHERS</div>
+          </div>
+
+          <!-- HEADLINE & IMAGE -->
+          <div style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: -1rem;">
+            
+            <h2 class="fs-fade" style="font-family: var(--font-serif); font-size: clamp(4rem, 8vw, 8rem); color: var(--charcoal); font-weight: 300; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; position: relative; z-index: 3; opacity: 0; transform: translateY(20px); filter: url(#fs-distortion);">ONE SIGNATURE</h2>
+
+            <!-- Left Side Editorial Text -->
+            <div class="fs-fade" style="position: absolute; left: 0; top: 45%; transform: translateY(-50%); max-width: 250px; text-align: left; font-size: 0.95rem; color: var(--charcoal); line-height: 1.6; font-weight: 400; filter: url(#fs-distortion); z-index: 3;">
+              DUUO was founded to bring clarity, structure, and accountability to the interior design process.<br/><br/>From the earliest concept to final delivery, every project is guided by the same hands, the same standards, and the same commitment to excellence.
+            </div>
+
+            <!-- The Grid -->
+            <div class="fs-fade" style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 45vw; max-width: 650px; height: 25vw; max-height: 350px; z-index: 1; background-image: linear-gradient(to right, rgba(139,37,0,0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(139,37,0,0.2) 1px, transparent 1px); background-size: 2.5vw 2.5vw; border: 1px solid rgba(139,37,0,0.2); opacity: 0;"></div>
+
+            <!-- The Portrait Wrapper -->
+            <div class="fs-hero-image-wrapper" style="position: relative; z-index: 2; width: 55vw; max-width: 800px; aspect-ratio: 16/10; margin-top: -4rem; overflow: hidden; opacity: 0;">
+              
+              <!-- Left Half -->
+              <div class="fs-image-left" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; clip-path: inset(0 50% 0 0); transform: translateX(-15%); opacity: 1;">
+                <img src="./assets/Founders.png" alt="Founders Left" style="width: 100%; height: 100%; object-fit: contain; object-position: center center; transform: scale(0.6); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%); mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%);" />
+              </div>
+              
+              <!-- Right Half -->
+              <div class="fs-image-right" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; clip-path: inset(0 0 0 50%); transform: translateX(15%); opacity: 1;">
+                <img src="./assets/Founders.png" alt="Founders Right" style="width: 100%; height: 100%; object-fit: contain; object-position: center center; transform: scale(0.6); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%); mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%);" />
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- BOTTOM INFO -->
+          <div class="fs-fade" style="width: 100%; max-width: 900px; display: flex; justify-content: center; align-items: flex-start; margin-top: -8rem; gap: 6rem; opacity: 0; transform: translateY(20px); position: relative; z-index: 2; filter: url(#fs-distortion);">
+            
+            <div style="display: flex; flex-direction: column; gap: 2rem; text-align: left;">
+              <div>
+                <div style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--charcoal); text-transform: uppercase; letter-spacing: 0.05em;">Basil Bashir</div>
+                <div style="font-size: 0.75rem; color: var(--rust); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.25rem; font-weight: 500;">Design Principal</div>
+              </div>
+              <div>
+                <div style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--charcoal); text-transform: uppercase; letter-spacing: 0.05em;">Basit Bashir</div>
+                <div style="font-size: 0.75rem; color: var(--rust); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.25rem; font-weight: 500;">Execution Principal</div>
+              </div>
+            </div>
+
+            <!-- Separator Line -->
+            <div style="width: 1px; height: 100px; background-color: rgba(139,37,0,0.3); margin-top: 0.5rem;"></div>
+
+            <!-- Supporting Copy -->
+            <div style="font-size: 1.1rem; color: var(--charcoal); font-weight: 400; line-height: 1.6; max-width: 250px; padding-top: 2rem; text-align: left;">
+              Luxury Without Chaos starts<br/>with accountability.
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- React 3D Journey Section -->
+      <div id="journey-react-root" style="display: none;"></div>
+
+      <!-- Build Sequence Section -->
+      <section id="build-sequence-section" style="display: none; width: 100vw; height: 100vh; position: relative; overflow: hidden; background-color: var(--charcoal);">
+        <canvas id="build-sequence-canvas" style="width: 100%; height: 100%; display: block; filter: brightness(0.9);"></canvas>
+        <div id="build-text-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 10;">
+          <h2 id="build-text-concept" style="font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 10vw, 12rem); color: var(--rust); opacity: 0; position: absolute; margin: 0; font-weight: 400;">Concept</h2>
+          <h2 id="build-text-design" style="font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 10vw, 12rem); color: var(--rust); opacity: 0; position: absolute; margin: 0; font-weight: 400;">Design</h2>
+          <h2 id="build-text-build" style="font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 10vw, 12rem); color: var(--rust); opacity: 0; position: absolute; margin: 0; font-weight: 400;">Build</h2>
+        </div>
+      </section>
+
+      <!-- Chaos Score Section -->
+      <section id="chaos-score-section" style="display: none; width: 100vw; min-height: 100vh; position: relative; background-color: var(--cream); overflow: hidden; font-family: var(--font-sans);">
+        <div id="cs-container" style="width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; position: relative;">
+          <!-- Dynamically injected via JS -->
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact-section" style="display: none;"></section>
+
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
