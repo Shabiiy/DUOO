@@ -175,10 +175,10 @@ const loadVideo = new Promise((resolve) => {
 });
 
 const loadWindow = new Promise((resolve) => {
-  if (document.readyState === 'complete') {
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
     resolve();
   } else {
-    window.addEventListener('load', resolve, { once: true });
+    document.addEventListener('DOMContentLoaded', resolve, { once: true });
   }
 });
 
@@ -198,6 +198,7 @@ const loadingInterval = setInterval(() => {
 }, 150);
 
 Promise.all([loadVideo, loadWindow, loadFonts]).then(() => {
+  buildSequence.preloadImages();
   clearInterval(loadingInterval);
   // Fast forward to 100% smoothly
   const finishInterval = setInterval(() => {
