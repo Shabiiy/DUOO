@@ -32,6 +32,12 @@ export class BuildSequence {
       const img = new Image();
       const paddedNum = i.toString().padStart(6, '0');
       img.src = `/assets/BUILD/frames/frame_${paddedNum}.webp`;
+      img.onload = () => {
+        // If this newly loaded image is the current frame, render it instantly to avoid skipped frames
+        if (Math.round(this.currentFrame.frame) === i - 1) {
+          this.render();
+        }
+      };
       this.images.push(img);
     }
   }
@@ -43,8 +49,9 @@ export class BuildSequence {
   }
 
   render() {
-    if(!this.images[this.currentFrame.frame]) return;
-    const img = this.images[this.currentFrame.frame];
+    const frameIndex = Math.round(this.currentFrame.frame);
+    if(!this.images[frameIndex]) return;
+    const img = this.images[frameIndex];
     
     if(img.complete && img.naturalHeight !== 0) {
       const canvasRatio = this.canvas.width / this.canvas.height;
