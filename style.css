@@ -1,13 +1,15 @@
 :root {
-  --rust: #8B2500;
+  --rust: #B84020;
+  --rust-dark: #8B2500;
   --cream: #F5F0E8;
   --cream-dark: #EDE8DF;
   --charcoal: #1A1A18;
-  --warm-gray: #888780;
+  --light-grey: #444444;
   --white: #FFFFFF;
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-sans: 'DM Sans', sans-serif;
-  --font-hero: 'Playfair Display', serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-hero: 'Playfair Display', Georgia, serif;
+  --font-accent: 'Great Vibes', cursive;
 }
 
 * {
@@ -25,10 +27,25 @@ body, html {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
 }
 
-* {
-  cursor: none !important;
+* { cursor: none !important; }
+
+a, button {
+  font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Accessibility Utilities */
@@ -73,7 +90,7 @@ body.intro-active { overflow: hidden; height: 100vh; }
 }
 
 .nav-brand.glass {
-  background: rgba(139, 37, 0, 0.85); 
+  background: rgba(184, 64, 32, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -81,11 +98,10 @@ body.intro-active { overflow: hidden; height: 100vh; }
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* PillNav Geometry (EC Style) */
 .nav-links.glass {
   display: flex;
-  gap: 3px; 
-  background: rgba(139, 37, 0, 0.85); 
+  gap: 3px;
+  background: rgba(184, 64, 32, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -197,10 +213,28 @@ body.intro-active { overflow: hidden; height: 100vh; }
   border-color: rgba(139, 37, 0, 0.8);
 }
 
-/* Mobile Adjustments for Cursor */
 @media (max-width: 1024px) {
   * { cursor: auto !important; }
-  .custom-cursor, .cursor-glow, canvas { display: none !important; }
+  .custom-cursor, .cursor-glow { display: none !important; }
+}
+
+@media (max-width: 768px) {
+  #navbar {
+    padding: 1rem 1.5rem;
+  }
+  .duuo-giant-bubble {
+    width: 90vw;
+    padding: 20px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .duuo-wa-sender { font-size: 1.4rem; }
+  .duuo-wa-message { font-size: 2.5rem; }
+  .chaos-bubble { width: calc(100vw - 40px); }
+}
+
+@media (max-width: 480px) {
+  .duuo-wa-message { font-size: 1.8rem; }
 }
 
 /* Intro Screen */
