@@ -164,14 +164,13 @@ const loadVideo = new Promise((resolve) => {
     resolve();
   };
 
-  if (scene00Video.readyState >= 3) {
+  // Only wait for metadata (fraction of a second), not full buffering
+  if (scene00Video.readyState >= 1) {
     finish();
   } else {
-    scene00Video.addEventListener('canplaythrough', finish, { once: true });
-    scene00Video.addEventListener('loadeddata', finish, { once: true });
+    scene00Video.addEventListener('loadedmetadata', finish, { once: true });
     scene00Video.addEventListener('error', finish, { once: true });
-    // Failsafe: max 5 seconds wait for video buffer
-    setTimeout(finish, 5000);
+    setTimeout(finish, 1500); // 1.5s max wait for video init
   }
 });
 
