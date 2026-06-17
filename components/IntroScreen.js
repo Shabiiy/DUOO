@@ -18,10 +18,7 @@ export class IntroScreen {
     this.tagline1 = document.querySelector('.intro-tagline-1');
     this.tagline2 = document.querySelector('.intro-tagline-2');
 
-    // Fade in intro on page load
-    gsap.to(this.screen, { opacity: 1, duration: 1, ease: 'power2.out' });
-
-    gsap.fromTo([this.logo, this.tagline1, this.tagline2], 
+    gsap.fromTo([this.tagline1, this.tagline2], 
       { opacity: 0 }, 
       { opacity: 1, duration: 1.5, stagger: 0.4, ease: 'power2.out', delay: 0.5 }
     );
