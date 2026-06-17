@@ -198,6 +198,33 @@ function updateProgress(percent) {
   loadingText.innerText = `${Math.floor(percent)}%`;
 }
 
+const loadingTips = document.getElementById('loading-tips');
+const tips = [
+  "Preparing experience...",
+  "Structure. Precision. Craft.",
+  "Aligning architectural grids...",
+  "Luxury without chaos.",
+  "Refining the details...",
+  "The best design is invisible."
+];
+let tipIndex = 0;
+
+const tipInterval = setInterval(() => {
+  if (progress >= 100) {
+    clearInterval(tipInterval);
+    return;
+  }
+  tipIndex = (tipIndex + 1) % tips.length;
+  gsap.to(loadingTips, {
+    opacity: 0,
+    duration: 0.3,
+    onComplete: () => {
+      loadingTips.innerText = tips[tipIndex];
+      gsap.to(loadingTips, { opacity: 0.6, duration: 0.3 });
+    }
+  });
+}, 1800);
+
 // Simulate progress until promises resolve
 const loadingInterval = setInterval(() => {
   if (progress < 85) { // Cap artificial progress at 85%
@@ -214,6 +241,7 @@ Promise.all([loadVideo, loadWindow, loadFonts]).then(() => {
     updateProgress(progress);
     if (progress >= 100) {
       clearInterval(finishInterval);
+      clearInterval(tipInterval);
       gsap.to(preloaderScreen, {
         opacity: 0,
         duration: 0.8,
