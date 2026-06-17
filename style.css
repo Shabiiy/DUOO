@@ -359,7 +359,7 @@ body.intro-active { overflow: hidden; height: 100vh; }
   height: 2px;
   background: rgba(26, 26, 24, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .loading-bar {
