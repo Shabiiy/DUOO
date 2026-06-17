@@ -28,18 +28,37 @@ export class BuildSequence {
   }
 
   preloadImages() {
-    for (let i = 1; i <= this.frameCount; i++) {
-      const img = new Image();
-      const paddedNum = i.toString().padStart(6, '0');
-      img.src = `/assets/BUILD/frames/frame_${paddedNum}.webp`;
-      img.onload = () => {
-        // If this newly loaded image is the current frame, render it instantly to avoid skipped frames
-        if (Math.round(this.currentFrame.frame) === i - 1) {
-          this.render();
-        }
-      };
-      this.images.push(img);
-    }
+    this.images = new Array(this.frameCount);
+    let loadedCount = 0;
+    let indexToLoad = 1;
+
+    const loadNextBatch = () => {
+      while (indexToLoad <= this.frameCount && indexToLoad <= loadedCount + 10) {
+        const i = indexToLoad;
+        indexToLoad++;
+
+        const img = new Image();
+        const paddedNum = i.toString().padStart(6, '0');
+        img.src = `/assets/BUILD/frames/frame_${paddedNum}.webp`;
+        
+        img.onload = () => {
+          loadedCount++;
+          if (Math.round(this.currentFrame.frame) === i - 1) {
+            this.render();
+          }
+          if (indexToLoad <= this.frameCount) loadNextBatch();
+        };
+        
+        img.onerror = () => {
+          loadedCount++;
+          if (indexToLoad <= this.frameCount) loadNextBatch();
+        };
+        
+        this.images[i - 1] = img;
+      }
+    };
+
+    loadNextBatch();
   }
 
   resize() {
@@ -97,7 +116,7 @@ export class BuildSequence {
         start: "top top",
         end: "+=6000",
         pin: true,
-        scrub: 1,
+        scrub: true,
         onUpdate: () => this.render()
       }
     });
@@ -105,7 +124,7 @@ export class BuildSequence {
     // 1. Frame Sequence Animation
     this.tl.to(this.currentFrame, {
       frame: this.frameCount - 1,
-      snap: "frame",
+      roundProps: "frame",
       ease: "none",
       duration: 10
     }, 0);
