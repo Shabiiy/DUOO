@@ -185,15 +185,24 @@ const loadWindow = new Promise((resolve) => {
 // We can also ensure fonts are loaded
 const loadFonts = document.fonts ? document.fonts.ready : Promise.resolve();
 
+const preloaderScreen = document.getElementById('preloader-screen');
+const loadingBar = document.querySelector('.loading-bar');
+const loadingText = document.querySelector('.loading-text');
+
 let progress = 0;
 const targetProgress = 100;
 const increment = 10;
+
+function updateProgress(percent) {
+  loadingBar.style.width = `${percent}%`;
+  loadingText.innerText = `${Math.floor(percent)}%`;
+}
 
 // Simulate progress until promises resolve
 const loadingInterval = setInterval(() => {
   if (progress < 85) { // Cap artificial progress at 85%
     progress += increment;
-    introScreen.updateProgress(progress);
+    updateProgress(progress);
   }
 }, 150);
 
@@ -202,9 +211,18 @@ Promise.all([loadVideo, loadWindow, loadFonts]).then(() => {
   // Fast forward to 100% smoothly
   const finishInterval = setInterval(() => {
     progress += 5;
-    introScreen.updateProgress(progress);
+    updateProgress(progress);
     if (progress >= 100) {
       clearInterval(finishInterval);
+      gsap.to(preloaderScreen, {
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          preloaderScreen.style.display = 'none';
+          introScreen.startAnimations();
+        }
+      });
     }
   }, 30);
 });

@@ -5,41 +5,24 @@ export class IntroScreen {
     this.screen = document.getElementById('intro-screen');
     this.logo = document.getElementById('intro-logo');
     this.hint = document.querySelector('.intro-hint');
-    this.loadingBar = document.querySelector('.loading-bar');
-    this.loadingText = document.querySelector('.loading-text');
     this.onComplete = onComplete;
-    this.isLoaded = false;
     this.interactionTriggered = false;
 
-    this.init();
-  }
-
-  init() {
     this.tagline1 = document.querySelector('.intro-tagline-1');
     this.tagline2 = document.querySelector('.intro-tagline-2');
-
-    gsap.fromTo([this.tagline1, this.tagline2], 
-      { opacity: 0 }, 
-      { opacity: 1, duration: 1.5, stagger: 0.4, ease: 'power2.out', delay: 0.5 }
-    );
   }
 
-  updateProgress(percent) {
-    this.loadingBar.style.width = `${percent}%`;
-    this.loadingText.innerText = `${Math.floor(percent)}%`;
-    if (percent >= 100 && !this.isLoaded) {
-      this.isLoaded = true;
-      gsap.to([this.loadingBar, this.loadingText], {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => this.setupInteraction()
-      });
-    }
+  startAnimations() {
+    gsap.fromTo([this.tagline1, this.tagline2], 
+      { opacity: 0 }, 
+      { opacity: 1, duration: 1.5, stagger: 0.4, ease: 'power2.out' }
+    );
+    this.setupInteraction();
   }
 
   setupInteraction() {
     // Reveal hint smoothly
-    gsap.to(this.hint, { opacity: 0.5, duration: 1.5, ease: 'power2.out' });
+    gsap.to(this.hint, { opacity: 0.5, duration: 1.5, ease: 'power2.out', delay: 1 });
 
     const events = ['click', 'touchstart', 'wheel', 'keydown'];
     const trigger = () => {
